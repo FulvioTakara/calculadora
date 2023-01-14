@@ -4,61 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        .fundo{
-            background-image: linear-gradient(45deg, black, crimson);
-            height: 100vh;
-            color: white;
-            font-family: Arial, Helvetica, sans-serif;
-            text-align: center;
-        }
-
-        .calculadora{
-            position: absolute;
-            background-color: rgba(0, 0, 0, 0.782);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            border-radius: 15px;
-            padding: 15px;
-        }
-        #resultado{
-            background-color: white;
-            width: 250px;
-            height: 45px;
-            border-radius: 5px;
-            margin: 5px;
-            font-size: 35px;
-            color: black;
-            text-align: right;
-            padding: 5px;
-        }
-        button{
-            width: 60px;
-            height: 60px;
-            font-size: 25px;
-            border-radius: 15px;
-            cursor: pointer;
-            background-color: rgb(62, 62, 62);
-            color: white;
-            margin: 3px;
-        }
-        button:hover{
-            background-color: black;
-        }
-    </style>
+    <link rel="stylesheet" href="./calculadora.css">
     <title>Calculadora</title>
 </head>
 <body>
     <div class="fundo">
         <div class="calculadora">
             <h1>Calculadora</h1>
-            <p id="resultado"></p>
+            <p id="resultado"></p> <!--Aqui iremos representar o resultado e os dados da calculadora-->
             <table>
+                <!--
+                    Foi criada uma tabela para uma melhor personalização dos botões, 
+                    cada coluna em sua respectiva linha representa um botão da calculadora, 
+                    onde cada botão possui sua função ao ser clicado. 
+                -->
                 <tr>
                     <td><button onclick="clean()">C</button></td>
                     <td><button onclick="back()">DEL</button></td>
@@ -81,27 +40,37 @@
                     <td><button onclick="insert('1')">1</button></td>
                     <td><button onclick="insert('2')">2</button></td>
                     <td><button onclick="insert('3')">3</button></td>
+                    <!--rowspan adicionados para o botão ocupar o espaço de 2 linhas-->
                     <td rowspan="2"><button style="height: 126px;" onclick="calcular()">=</button></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><button style="width: 128px;" onclick="insert('0')">0</button></td>
+                    <!--colspan adicionados para o botão ocupar o espaço de 2 colunas-->
+                    <td colspan="2"><button style="width: 128px;" onclick="insert('0')">0</button></td> 
                     <td><button onclick="insert('.')">.</button></td>
                 </tr>
             </table>
         </div>
     </div>
     <Script>
+        /*
+        Função criada para adicionar os números e símbolos nos resltados da calculadora, 
+        agregando o próximo comando sem que o anterior saia da exibição
+        */
         function insert(num){
             var numero = document.getElementById('resultado').innerHTML
             document.getElementById('resultado').innerHTML = numero +  num;
         }
+        //Função criada para que o botão 'C' apague tudo o que foi digitado na calculadora
+        
         function clean(){
             document.getElementById('resultado').innerHTML = ""
         }
+        //Função criada para que o botão 'DEL' apague apenas o ultimo dado adicionado adicionado pelo usuário na calculdora
         function back(){
             var resultado = document.getElementById('resultado').innerHTML;
             document.getElementById('resultado').innerHTML = resultado.substring(0, resultado.length -1)
         }
+        //Função criada para o calculo automático estabelecido pelo usuário
         function calcular(){
             var resultado = document.getElementById('resultado').innerHTML;
             if(resultado){
