@@ -11,8 +11,13 @@
     <div class="fundo">
         <div class="calculadora">
             <h1>Calculadora</h1>
-            <p id="resultado"></p>
+            <p id="resultado"></p> <!--Aqui iremos representar o resultado e os dados da calculadora-->
             <table>
+                <!--
+                    Foi criada uma tabela para uma melhor personalização dos botões, 
+                    cada coluna em sua respectiva linha representa um botão da calculadora, 
+                    onde cada botão possui sua função ao ser clicado. 
+                -->
                 <tr>
                     <td><button onclick="clean()">C</button></td>
                     <td><button onclick="back()">DEL</button></td>
@@ -35,27 +40,37 @@
                     <td><button onclick="insert('1')">1</button></td>
                     <td><button onclick="insert('2')">2</button></td>
                     <td><button onclick="insert('3')">3</button></td>
+                    <!--rowspan adicionados para o botão ocupar o espaço de 2 linhas-->
                     <td rowspan="2"><button style="height: 126px;" onclick="calcular()">=</button></td>
                 </tr>
                 <tr>
-                    <td colspan="2"><button style="width: 128px;" onclick="insert('0')">0</button></td>
+                    <!--colspan adicionados para o botão ocupar o espaço de 2 colunas-->
+                    <td colspan="2"><button style="width: 128px;" onclick="insert('0')">0</button></td> 
                     <td><button onclick="insert('.')">.</button></td>
                 </tr>
             </table>
         </div>
     </div>
     <Script>
+        /*
+        Função criada para adicionar os números e símbolos nos resltados da calculadora, 
+        agregando o próximo comando sem que o anterior saia da exibição
+        */
         function insert(num){
             var numero = document.getElementById('resultado').innerHTML
             document.getElementById('resultado').innerHTML = numero +  num;
         }
+        //Função criada para que o botão 'C' apague tudo o que foi digitado na calculadora
+        
         function clean(){
             document.getElementById('resultado').innerHTML = ""
         }
+        //Função criada para que o botão 'DEL' apague apenas o ultimo dado adicionado adicionado pelo usuário na calculdora
         function back(){
             var resultado = document.getElementById('resultado').innerHTML;
             document.getElementById('resultado').innerHTML = resultado.substring(0, resultado.length -1)
         }
+        //Função criada para o calculo automático estabelecido pelo usuário
         function calcular(){
             var resultado = document.getElementById('resultado').innerHTML;
             if(resultado){

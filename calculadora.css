@@ -10,6 +10,7 @@
     text-align: center;
 }
 
+/* classe criada para centracizar e personalizar a calculadora */
 .calculadora{
     position: absolute;
     background-color: rgba(0, 0, 0, 0.782);
@@ -19,6 +20,8 @@
     border-radius: 15px;
     padding: 15px;
 }
+
+/* Personalização da tela de ezibição dos resultados dos calculos realizados pelo usuário */
 #resultado{
     background-color: white;
     width: 250px;
@@ -30,6 +33,12 @@
     text-align: right;
     padding: 5px;
 }
+
+/*
+personalizações dos botões da calculadora, 
+dois botões em expecial ('0' e '=') tiveram uma configuração diferenciada aplicados no próprio html
+e efeito adicionado quando o cursor passa por eles
+*/
 button{
     width: 60px;
     height: 60px;
